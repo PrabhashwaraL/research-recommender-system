@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% if prod.replace(' ','') == '' %}
+
+       <div class="jumbotron">
+         <h3 style="font-weight: bold; color:red;">Invalid Product Name. Please go to Home page and enter a correct product name.</h3>
+       </div>
+
+    {% else %}
+
+      {% if exists=='n' %}
+
+        <div class="jumbotron">
+          <h3 style="font-weight: bold; color:red;">Entered Product Name does not exist. Please go to Home page and enter a correct product name.</h3>
+        </div>
+
+      {% else %}
+
+        <div class="jumbotron">
+          <h2 style="font-weight: bold; color:blue;">"{{prod}}" - Price: Rs. {{price}}</h2>
+            <input type="button" class="btn buy-btn" style="background-color: #ff4d4d; color: white;" value="Add to Cart">
+        </div>
+
+        {% include 'similarprodtable.html' %}
+
+      {% endif %}
+
+    {% endif %}
+</div>
+
+
+{% endblock %}
